@@ -22,7 +22,7 @@ You will complete this lab following the lab documentation found below
 
 2. Mongoose "Flights" Lab - Part 2 - [link]()
 
-3. Mongoose "Flights" Lab - Part 3 - [link]()
+3. Mongoose "Flights" Lab - Part 3 - [link](https://www.notion.so/Mongoose-Flights-Lab-Pt-3-0a5a60fdabb94068b649c3ee7657abdd)
 
 ## Submission
 
