@@ -2,7 +2,10 @@
 const express = require('express');
 const logger = require('morgan')
 const indexRoutes = require('./routes/index');
-const flightRoutes = require('./routes/flights')
+const flightRoutes = require('./routes/flights');
+const detailsRoutes = require('./routes/details');
+
+
 
 //Initialize express app
 const app = express();
@@ -22,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 //Mount routes
 app.use('/', indexRoutes);
 app.use('/flights', flightRoutes);
+app.use('/', detailsRoutes);
 
 app.listen(3000, () => {
     console.log('express is listening on port:3000');

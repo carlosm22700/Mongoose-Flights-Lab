@@ -4,6 +4,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //set up the model for our collection in the db
+
+const destinationSchema = new Schema(
+	{
+		airport: {
+			type: String,
+			enum: ["AUS", "DFW", "DEN", "LAX", "SAN"],
+		},
+		arrival: {
+			type: Date,
+		}
+	},
+	{
+		timestamps: true
+	}
+);
+
 const flightSchema = new Schema(
 	{
 		airline: {
@@ -26,6 +42,9 @@ const flightSchema = new Schema(
 			default: () => {
 				return new Date().getFullYear() + 1;
 			},
+		},
+		destinations: {
+			type: [destinationSchema],
 		},
 	},
 	{
