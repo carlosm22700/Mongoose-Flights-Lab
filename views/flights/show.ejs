@@ -24,10 +24,10 @@
         </tbody>
     </table>
     
-    <!-- <br>
+    <br>
 
     <h2>Tickets</h2>
-    < //if (tickets.length) { %>
+    <% if (tickets.length) { %>
         <table>
             <thead>
                 <tr>
@@ -36,20 +36,20 @@
                 </tr>
             </thead>
             <tbody>
-                <// tickets.forEach(t => { %>
+                <% tickets.forEach(t => { %>
                     <tr>
-                        <td>%= t.seat %></td>
-                        <td>%= t.price %></td>
+                        <td><%= t.seat %></td>
+                        <td><%= t.price %></td>
                     </tr>
-                < }) %>
+                <% }) %>
             </tbody>
         </table>
-    < } else { %>
+    <% } else { %>
         <h5>No Tickets Have Been Added</h5>
-    < } %>
-    <p id="new-ticket"><a href="/flights/<= flight._id %>/tickets/new">New Ticket</a></p> -->
+    <% } %>
+    <p><a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a></p>
 
-    <br>
+    <br> 
 
     <h2>Destinations</h2>
     <% if (flight.destinations.length) { %>
