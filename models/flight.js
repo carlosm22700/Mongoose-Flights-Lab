@@ -3,41 +3,37 @@ const mongoose = require('mongoose');
 // set up the schema for our model
 const Schema = mongoose.Schema;
 
-const reviewSchema = new Schema({
-    content: {
-        type: String,
-        required: true
-    },
-    rating: {
-        type: Number,
-        min: 1,
-        max: 5,
-        default: 5
-    }
-}, { timestamps: true });
-
-
-
-const movieSchema = new Schema({
-    title: { type: String, required: true },
-    releaseYear: {
-        type: Number, 
-        default: function() {
-            return new Date().getFullYear();
+//set up the model for our collection in the db
+const flightSchema = new Schema(
+	{
+		airline: {
+			type: String,
+			required: true,
+			enum: ["American", "Southwest", "United"],
+		},
+		airport: {
+			type: String,
+			default: "DEN",
+			enum: ["AUS", "DFW", "DEN", "LAX", "SAN"],
+		},
+		flightNo: { 
+            type: Number, 
+            min: 1, 
+            max: 9999 
         },
-        min: 1927
-    },
-    mpaaRating: {type: String, enum: ['G', 'PG', 'PG-13', 'R']},
-    cast: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Performer'
-    }],
-    nowShowing: {type: Boolean, default: false},
-    reviews: [reviewSchema]
-}, { timestamps: true });
-// set up the model for our collection in the database
+		departs: {
+			type: Date,
+			default: () => {
+				return new Date().getFullYear() + 1;
+			},
+		},
+	},
+	{
+		timestamps: true,
+	}
+);
 
-module.exports = mongoose.model('Movie', movieSchema)
+module.exports = mongoose.model('Flight', flightSchema)
 
 // the two arguments for mongoose.model
 // 1) the model name - also used to create the collection name in the database
